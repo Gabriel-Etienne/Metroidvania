@@ -2,15 +2,24 @@ using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    Animator _animator;
+    
+    private void Awake()
     {
-        
+        _animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
+    {
+        // ground check 
+        // walk
+        // X et Y
+    }
+
+    private void OnDisable()
     {
         
     }
 }
+
+ 
