@@ -6,6 +6,8 @@ using System;
 public class PlayerControllerScript : MonoBehaviour
 {
     public static Action<Vector2> OnMoveInput;
+    public static Action OnJumpInput;
+    public static Action<bool> OnRunInput;
     public void OnMove(InputAction.CallbackContext context)
     {
         if (context.performed && context.ReadValue<Vector2>().magnitude > 0.2)
@@ -15,6 +17,26 @@ public class PlayerControllerScript : MonoBehaviour
         else if (context.canceled)
         {
             OnMoveInput?.Invoke(Vector2.zero);
+        }
+    }
+    
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            OnJumpInput?.Invoke();
+        }
+    }
+    
+    public void OnRun(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            OnRunInput?.Invoke(true);
+        }
+        else if (context.canceled)
+        {
+            OnRunInput?.Invoke(false);
         }
     }
 }

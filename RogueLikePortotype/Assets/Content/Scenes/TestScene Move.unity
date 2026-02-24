@@ -133,11 +133,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8934112962866842408, guid: 4826ac75657bf5c47b799495dcdc0ad4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.57
+      value: 2.76
       objectReference: {fileID: 0}
     - target: {fileID: 8934112962866842408, guid: 4826ac75657bf5c47b799495dcdc0ad4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.16
+      value: 0.67
       objectReference: {fileID: 0}
     - target: {fileID: 8934112962866842408, guid: 4826ac75657bf5c47b799495dcdc0ad4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 668374823}
   - component: {fileID: 668374822}
   - component: {fileID: 668374824}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CollisionTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}

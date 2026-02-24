@@ -8,15 +8,23 @@ public class PlayerMoveScript : MonoBehaviour
     
     private Vector2 direction;
     private bool isMoving = false;
+    private bool isRunning = false;
 
     private void OnEnable()
     {
         PlayerControllerScript.OnMoveInput += GetMoveInput;
+        PlayerControllerScript.OnRunInput += UpdateIsRunning;
     }
 
     private void OnDisable()
     {
         PlayerControllerScript.OnMoveInput -= GetMoveInput;
+        PlayerControllerScript.OnRunInput -= UpdateIsRunning;
+    }
+
+    void UpdateIsRunning(bool value)
+    {
+        isRunning =  value;
     }
 
     void GetMoveInput(Vector2 inputValue)
@@ -37,15 +45,19 @@ public class PlayerMoveScript : MonoBehaviour
         if (!player || player.moveMoveState != PlayerMoveState.Cancelable) 
             return;
 
+        float speedToTarget = isRunning ? player.stats.RunSpeed : player.stats.WalkSpeed;
+        float speedToAccel = isRunning ? player.stats.AccelRunSpeed : player.stats.AccelWalkSpeed;
+        float speedToDecel = player.stats.DecelWalkSpeed;
+        
         float targetSpeed = isMoving 
-            ? direction.x * player.stats.WalkSpeed 
+            ? direction.x * speedToTarget
             : 0f;
 
         float currentSpeed = rb.linearVelocity.x;
 
-        float acceleration = isMoving 
-            ? player.stats.AccelWalkSpeed 
-            : player.stats.DecelWalkSpeed;
+        float acceleration = isMoving
+            ? speedToAccel
+            : speedToDecel;
 
         float newSpeed = Mathf.MoveTowards(
             currentSpeed,
