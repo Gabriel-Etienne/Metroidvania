@@ -15,6 +15,9 @@ MonoBehaviour:
   health: 10
   baseDamage: 5
   walkSpeed: 5
+  accelWalkSpeed: 50
+  decelWalkSpeed: 30
   runSpeed: 10
+  accelRunSpeed: 5
   dashSpeed: 15
   jumpForce: 10

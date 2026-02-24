@@ -21,9 +21,18 @@ public class Stats : ScriptableObject
     [Header("Movements related Variables")]
     [SerializeField] private float walkSpeed;
     public float WalkSpeed => walkSpeed;
+    [SerializeField] private float accelWalkSpeed;
+    public float AccelWalkSpeed => accelWalkSpeed;
+    [SerializeField] private float decelWalkSpeed;
+    public float DecelWalkSpeed => decelWalkSpeed;
+    
     [Space(5)]
     [SerializeField] private float runSpeed;
     public float RunSpeed => runSpeed;
+    [SerializeField] private float accelRunSpeed;
+    public float AccelRunSpeed => accelRunSpeed;
+    
+    
     [Space(5)]
     [SerializeField] private float dashSpeed;
     public float DashSpeed => dashSpeed;
