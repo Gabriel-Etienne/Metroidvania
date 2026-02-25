@@ -14,13 +14,18 @@ public class Player : Entity
     public Rigidbody2D rb;
     public int lastVelocityDirection = 1;
     
-    
+    [SerializeField] private Transform _camTarget;
 
     private void Awake()
     {
         if (groundCheckScript == null)
             groundCheckScript = GetComponent<GroundCheck>();
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        CameraManager.ChangeTransformTargetEvent?.Invoke(_camTarget);
     }
 
     private void Update()

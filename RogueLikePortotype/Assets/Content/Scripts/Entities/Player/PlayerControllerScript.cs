@@ -12,9 +12,24 @@ public class PlayerControllerScript : MonoBehaviour
     
     public static Action<bool> OnRunInput;
     public static Action OnDashInput;
+    
+    public static Action<Vector2> OnLookInput;
+
+    public void OnLook(InputAction.CallbackContext context)
+    {
+        if (context.performed && context.ReadValue<Vector2>().magnitude > 0.2f)
+        {
+            OnLookInput?.Invoke(context.ReadValue<Vector2>());
+        }
+        else 
+        {
+            OnLookInput?.Invoke(Vector2.zero);
+        }
+    }
+    
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (context.performed && context.ReadValue<Vector2>().magnitude > 0.2)
+        if (context.performed && context.ReadValue<Vector2>().magnitude > 0.2f)
         {
             OnMoveInput?.Invoke(context.ReadValue<Vector2>());
         }
