@@ -5,37 +5,45 @@ public class PlayerMoveScript : PlayerAction
 {
     public Player player;
     
-    private Vector2 direction;
-    private bool isMoving = false;
-    private bool isRunning = false;
+    private Vector2 _direction;
+    private bool _isMoving = false;
+    private bool _isRunning = false;
+    private bool _isGrounded = false;
 
     private void OnEnable()
     {
         PlayerControllerScript.OnMoveInput += GetMoveInput;
         PlayerControllerScript.OnRunInput += UpdateIsRunning;
+        GroundCheck.IsNowGroundedEvent += GetIsGrounded;
     }
 
     private void OnDisable()
     {
         PlayerControllerScript.OnMoveInput -= GetMoveInput;
         PlayerControllerScript.OnRunInput -= UpdateIsRunning;
+        GroundCheck.IsNowGroundedEvent -= GetIsGrounded;
     }
 
     void UpdateIsRunning(bool value)
     {
-        isRunning =  value;
+        _isRunning =  value;
+    }
+
+    void GetIsGrounded(bool value)
+    {
+        _isGrounded = value;
     }
 
     void GetMoveInput(Vector2 inputValue)
     {
         if (Mathf.Abs(inputValue.x) > 0.2f)
         {
-            isMoving = true;
-            direction = new Vector2(inputValue.x, 0).normalized;
+            _isMoving = true;
+            _direction = new Vector2(inputValue.x, 0).normalized;
         }
         else
         {
-            isMoving = false;
+            _isMoving = false;
         }
     }
 
@@ -44,17 +52,17 @@ public class PlayerMoveScript : PlayerAction
         if (!player || player.MoveMoveState != PlayerMoveState.Cancelable) 
             return;
 
-        float speedToTarget = isRunning ? player.stats.RunSpeed : player.stats.WalkSpeed;
-        float speedToAccel = isRunning ? player.stats.AccelRunSpeed : player.stats.AccelWalkSpeed;
+        float speedToTarget = _isRunning && _isGrounded ? player.stats.RunSpeed : player.stats.WalkSpeed;
+        float speedToAccel = _isRunning && _isGrounded ? player.stats.AccelRunSpeed : player.stats.AccelWalkSpeed;
         float speedToDecel = player.stats.DecelWalkSpeed;
         
-        float targetSpeed = isMoving 
-            ? direction.x * speedToTarget
+        float targetSpeed = _isMoving 
+            ? _direction.x * speedToTarget
             : 0f;
 
         float currentSpeed = player.rb.linearVelocity.x;
 
-        float acceleration = isMoving
+        float acceleration = _isMoving
             ? speedToAccel
             : speedToDecel;
 
