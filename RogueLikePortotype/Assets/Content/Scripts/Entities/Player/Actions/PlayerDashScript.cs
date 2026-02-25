@@ -20,6 +20,7 @@ public class PlayerDashScript : PlayerAction
     private float _initialGravityScale = 1f;
 
     private bool _hasDash = true;
+    private float _xInput = 0;
 
     private void Start()
     {
@@ -28,6 +29,7 @@ public class PlayerDashScript : PlayerAction
 
     private void OnEnable()
     {
+        PlayerControllerScript.OnMoveInput += GetMoveInput;
         PlayerControllerScript.OnDashInput += GetDashInput;
         GroundCheck.IsNowGroundedEvent += UpdateHasDash;
         ResetDashEvent += ResetDash;
@@ -35,6 +37,7 @@ public class PlayerDashScript : PlayerAction
 
     private void OnDisable()
     {
+        PlayerControllerScript.OnMoveInput -= GetMoveInput;
         PlayerControllerScript.OnDashInput -= GetDashInput;
         GroundCheck.IsNowGroundedEvent -= UpdateHasDash;
         ResetDashEvent -= ResetDash;
@@ -43,6 +46,11 @@ public class PlayerDashScript : PlayerAction
     void GetDashInput()
     {
         TryToDash();
+    }
+
+    void GetMoveInput(Vector2 input)
+    {
+        _xInput = input.x;
     }
 
     void UpdateHasDash(bool hasDash = true)
@@ -72,6 +80,7 @@ public class PlayerDashScript : PlayerAction
         player.ChangePlayerMoveState(PlayerMoveState.Prioritary, this);
         
         _delayIsFinished = false;
+        _delayBetweenIsFinished = false;
         
         if (!player.groundCheckScript.IsGrounded)
             _hasDash =  false;
@@ -115,8 +124,10 @@ public class PlayerDashScript : PlayerAction
         float timer = 0f;
         
         player.rb.gravityScale = 0;
-
-        float currentXToApply = player.stats.DashSpeed * player.lastVelocityDirection;
+        
+        
+        // Dash where the player want or where he was going in case he actually has no xInput
+        float currentXToApply = player.stats.DashSpeed * (Mathf.Abs(_xInput) > 0.2f ? _xInput : player.lastVelocityDirection); 
 
         while (timer < _delayOfDash)
         {

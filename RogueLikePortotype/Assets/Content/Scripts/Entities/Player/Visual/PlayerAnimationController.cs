@@ -19,9 +19,6 @@ public class PlayerAnimationController : MonoBehaviour
 
     private void OnEnable()
     {
-        // ground check 
-        // walk / RUN
-        // X et Y
         PlayerJumpScript.JumpPerformedEvent += UpdateHasJumped;
         PlayerControllerScript.OnMoveInput += UpdateInputDirection;
         GroundCheck.IsNowGroundedEvent += UpdateIsGrounded;

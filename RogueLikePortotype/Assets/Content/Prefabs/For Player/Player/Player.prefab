@@ -4987,7 +4987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDashScript
   player: {fileID: 9144299580736110667}
   _delayOfDash: 0.2
-  _delayBetweenDash: 0.19
+  _delayBetweenDash: 0.35
 --- !u!1 &6632539717898370349
 GameObject:
   m_ObjectHideFlags: 0
@@ -5121,7 +5121,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -5159,7 +5159,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0008136034, y: -0.4672675}
+  m_Offset: {x: -0.0002809763, y: -0.5082518}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5169,7 +5169,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.54250216, y: 0.26227355}
+  m_Size: {x: 0.5060804, y: 0.14436832}
   m_EdgeRadius: 0
 --- !u!114 &1768902594366566279
 MonoBehaviour:
@@ -5313,7 +5313,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _groundCheckPos: {fileID: 3043102895945644795}
-  _groundChecSize: {x: 0.36, y: 0.1}
+  _groundChecSize: {x: 0.5, y: 0.1}
   _coyoteTimeDuration: 0.15
   _drawGizmos: 1
   _groundCheckGizmoColor: {r: 1, g: 0, b: 0, a: 1}
@@ -5330,6 +5330,7 @@ GameObject:
   - component: {fileID: 6121283014959160467}
   - component: {fileID: 1216352088525883026}
   - component: {fileID: 2094938734773189954}
+  - component: {fileID: 3877019749611988432}
   - component: {fileID: 1229637256384205295}
   m_Layer: 6
   m_Name: Visual
@@ -5594,6 +5595,20 @@ MonoBehaviour:
     m_RotationOrder: 4
   _particleSystem: {fileID: 7340676550414874841}
   _animationDuration: 0.15
+--- !u!114 &3877019749611988432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7170627058329867890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21cd81ca41fd1314db0804c7aab04f56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDashEffect
+  _particleSystemOnGround: {fileID: 7340676550414874841}
+  _animationDuration: 0.5
 --- !u!114 &1229637256384205295
 MonoBehaviour:
   m_ObjectHideFlags: 0

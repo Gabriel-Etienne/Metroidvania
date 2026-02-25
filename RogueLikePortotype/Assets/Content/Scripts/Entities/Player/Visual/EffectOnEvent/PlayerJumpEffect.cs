@@ -15,7 +15,6 @@ public class PlayerJumpEffect : MonoBehaviour
     [SerializeField] ParticleSystem _particleSystem;
     
     [SerializeField] float _animationDuration = 0.5f;
-    private float _timer = 0f;
     Coroutine _currentRoutine;
 
     private void Awake()
