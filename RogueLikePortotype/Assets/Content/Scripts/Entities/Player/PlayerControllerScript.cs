@@ -5,6 +5,9 @@ using System;
 
 public class PlayerControllerScript : MonoBehaviour
 {
+    public static Action<bool> OnDebugAction;
+    public bool debugBool = true;
+    
     public static Action<Vector2> OnMoveInput;
     
     public static Action OnJumpInput;
@@ -14,6 +17,15 @@ public class PlayerControllerScript : MonoBehaviour
     public static Action OnDashInput;
     
     public static Action<Vector2> OnLookInput;
+
+    public void OnDebug(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            OnDebugAction?.Invoke(debugBool);
+            Debug.Log($"Debug Action: {debugBool}");
+        }
+    }
 
     public void OnLook(InputAction.CallbackContext context)
     {

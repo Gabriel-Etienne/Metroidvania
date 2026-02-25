@@ -2,13 +2,22 @@ using System;
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.InputSystem.Controls;
 
 public class CameraManager : MonoBehaviour
 {
     public static Action<bool> ManageParticleEvent;
+    [SerializeField] private List<ParticleSystem> particles;
+
+    
+    public static Action<bool> ManageFogEvent;
+    [SerializeField] private List<SpriteRenderer> _spriteFogMaterials;
+    private Coroutine _currentFogCoroutine;
+    [SerializeField] private float _fogTransitionDuration = 3f;
+    
+    
     public static Action<Transform> ChangeTransformTargetEvent;
     public static Action<bool> ChangeDeadZoneEvent;
+    
     
     private Transform _target = null;
     private Coroutine _followTargetCoroutine;
@@ -20,14 +29,24 @@ public class CameraManager : MonoBehaviour
     
     [SerializeField] float smoothTime = 0.2f;
     private Vector3 velocity;
+
+    private void Awake()
+    {
+        for (int i = 0; i < _spriteFogMaterials.Count; i++)
+        {
+            _spriteFogMaterials[i].material = new Material(_spriteFogMaterials[i].material);
+        }
+    }
     
-    public List<ParticleSystem> particles;
 
     private void OnEnable()
     {
         ChangeTransformTargetEvent += ChangeTransformTarget;
         ChangeDeadZoneEvent += ChangeDeadZone;
         ManageParticleEvent += ManageParticle;
+        ManageFogEvent +=  ManageFog;
+
+        PlayerControllerScript.OnDebugAction += ManageFog;
     }
 
     private void OnDisable()
@@ -35,6 +54,9 @@ public class CameraManager : MonoBehaviour
         ChangeTransformTargetEvent -= ChangeTransformTarget;
         ChangeDeadZoneEvent -= ChangeDeadZone;
         ManageParticleEvent -= ManageParticle;
+        ManageFogEvent -=  ManageFog; 
+        
+        PlayerControllerScript.OnDebugAction -= ManageFog;
     }
 
     private void ChangeDeadZone(bool newIsDeadZoneActive = true)
@@ -107,8 +129,7 @@ public class CameraManager : MonoBehaviour
         else
             Gizmos.DrawSphere(new Vector3(_target.position.x, _target.position.y, _target.position.z), 0.25f);
     }
-        
-        
+    
         
     #region  Particle Management
 
@@ -136,6 +157,56 @@ public class CameraManager : MonoBehaviour
         }
     }
     
+    #endregion
+    
+    #region  Particle Management
+
+    private void ManageFog(bool value)
+    {
+        Debug.Log($"ManageFog: {value}");
+        
+        StartFogCoroutine(value);
+    }
+
+    private void StartFogCoroutine(bool value)
+    {
+        if (_currentFogCoroutine != null)
+            StopCoroutine(_currentFogCoroutine);
+
+        _currentFogCoroutine = StartCoroutine(ChangeFogCoroutine(value));
+    }
+
+    IEnumerator ChangeFogCoroutine(bool value)
+    {
+        float targetValue = value ? 1f : 0f;
+
+        float startValue = _spriteFogMaterials[0].material.GetFloat("_AlphaValue");
+
+        float elapsed = 0f;
+
+        while (elapsed < _fogTransitionDuration)
+        {
+            elapsed += Time.deltaTime;
+
+            float t = elapsed / _fogTransitionDuration;
+            float currentValue = Mathf.Lerp(startValue, targetValue, t);
+
+            for (int i = 0; i < _spriteFogMaterials.Count; i++)
+            {
+                _spriteFogMaterials[i].material.SetFloat("_AlphaValue", currentValue);
+            }
+
+            yield return null;
+        }
+
+        for (int i = 0; i < _spriteFogMaterials.Count; i++)
+        {
+            _spriteFogMaterials[i].material.SetFloat("_AlphaValue", targetValue);
+        }
+
+        _currentFogCoroutine = null;
+    }
+
     #endregion
     
 }
