@@ -2,10 +2,9 @@ using UnityEngine;
 using System;
 using System.Collections;
 
-public class PlayerJumpScript : MonoBehaviour
+public class PlayerJumpScript : PlayerAction
 {
     public Player player;
-    public Rigidbody2D rb;
     
     public static Action JumpPerformedEvent;
         
@@ -33,7 +32,7 @@ public class PlayerJumpScript : MonoBehaviour
 
     void TryToJump()
     {
-        if (!player || player.moveMoveState != PlayerMoveState.Cancelable) 
+        if (!player || player.MoveMoveState != PlayerMoveState.Cancelable) 
             return;
         
         if (_delayIsFinished && (player.groundCheckScript.IsGrounded || player.groundCheckScript.CanUseCoyote))
@@ -51,14 +50,14 @@ public class PlayerJumpScript : MonoBehaviour
         if (_currentRoutine != null)
             StopCoroutine(_currentRoutine);
 
-        _currentRoutine = StartCoroutine(ScaleRoutine());
+        _currentRoutine = StartCoroutine(DelayRoutine());
         
         //Debug.Log("PerformJump");
-        rb.linearVelocityY = 0;
-        rb.AddForce(new Vector2(0,1) * player.stats.JumpForce, ForceMode2D.Impulse);
+        player.rb.linearVelocityY = 0;
+        player.rb.AddForce(new Vector2(0,1) * player.stats.JumpForce, ForceMode2D.Impulse);
     }
     
-    IEnumerator ScaleRoutine()
+    IEnumerator DelayRoutine()
     {
         float timer = 0f;
 

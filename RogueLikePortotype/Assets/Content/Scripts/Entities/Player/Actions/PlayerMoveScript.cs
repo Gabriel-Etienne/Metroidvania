@@ -1,10 +1,9 @@
 using UnityEngine;
 using System;
 
-public class PlayerMoveScript : MonoBehaviour
+public class PlayerMoveScript : PlayerAction
 {
     public Player player;
-    public Rigidbody2D rb;
     
     private Vector2 direction;
     private bool isMoving = false;
@@ -42,7 +41,7 @@ public class PlayerMoveScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!player || player.moveMoveState != PlayerMoveState.Cancelable) 
+        if (!player || player.MoveMoveState != PlayerMoveState.Cancelable) 
             return;
 
         float speedToTarget = isRunning ? player.stats.RunSpeed : player.stats.WalkSpeed;
@@ -53,7 +52,7 @@ public class PlayerMoveScript : MonoBehaviour
             ? direction.x * speedToTarget
             : 0f;
 
-        float currentSpeed = rb.linearVelocity.x;
+        float currentSpeed = player.rb.linearVelocity.x;
 
         float acceleration = isMoving
             ? speedToAccel
@@ -65,6 +64,6 @@ public class PlayerMoveScript : MonoBehaviour
             acceleration * Time.fixedDeltaTime
         );
 
-        rb.linearVelocityX = newSpeed;
+        player.rb.linearVelocityX = newSpeed;
     }
 }

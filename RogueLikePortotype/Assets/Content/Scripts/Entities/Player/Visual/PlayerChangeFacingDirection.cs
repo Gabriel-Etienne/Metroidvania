@@ -22,11 +22,11 @@ public class PlayerChangeFacingDirection : MonoBehaviour
 
     void ChangeFacingDirection()
     {
-        if (_rb.linearVelocityX > 0.1f)
+        if (_rb.linearVelocityX > 0.2f)
         { 
             _spriteRenderer.flipX = false;
         }
-        else if (_rb.linearVelocityX < -0.1f)
+        else if (_rb.linearVelocityX < -0.2f)
         {
             _spriteRenderer.flipX = true;
         }

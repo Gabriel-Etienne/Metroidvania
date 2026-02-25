@@ -19,7 +19,7 @@ public class GroundCheck : MonoBehaviour
     public bool IsGrounded => isGrounded;
     public bool CanUseCoyote => _coyoteTimeCounter > 0f;
     
-    public static Action IsNowGroundedEvent;
+    public static Action<bool> IsNowGroundedEvent;
 
     private void Awake()
     {
@@ -34,7 +34,11 @@ public class GroundCheck : MonoBehaviour
         
         if (lastCheck != isGrounded && isGrounded) // pour faire un effet lors de l'aterrissage du joueur
         {
-            IsNowGroundedEvent?.Invoke();
+            IsNowGroundedEvent?.Invoke(true);
+        }
+        else if (lastCheck != isGrounded && !isGrounded)
+        {
+            IsNowGroundedEvent?.Invoke(false);
         }
 
         if (isGrounded)

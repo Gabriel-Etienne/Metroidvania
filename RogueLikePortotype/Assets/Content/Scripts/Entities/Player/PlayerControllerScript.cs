@@ -8,6 +8,7 @@ public class PlayerControllerScript : MonoBehaviour
     public static Action<Vector2> OnMoveInput;
     public static Action OnJumpInput;
     public static Action<bool> OnRunInput;
+    public static Action OnDashInput;
     public void OnMove(InputAction.CallbackContext context)
     {
         if (context.performed && context.ReadValue<Vector2>().magnitude > 0.2)
@@ -25,6 +26,14 @@ public class PlayerControllerScript : MonoBehaviour
         if (context.performed)
         {
             OnJumpInput?.Invoke();
+        }
+    }
+    
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            OnDashInput?.Invoke();
         }
     }
     

@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class PlayerJumpEffect : MonoBehaviour
 {
-    private float _initialScale = 1f;
+    private Vector3 _initialScale = new Vector3(1,1,1);
     [SerializeField] AnimationCurve _animationCurveX;
     [SerializeField] AnimationCurve _animationCurveY;
+    
+    
+    [SerializeField] AnimationCurve _animationCurveGroundedX;
+    [SerializeField] AnimationCurve _animationCurveGroundedY;
     
     [SerializeField] ParticleSystem _particleSystem;
     
@@ -16,32 +20,49 @@ public class PlayerJumpEffect : MonoBehaviour
 
     private void Awake()
     {
-        _initialScale =  transform.localScale.x;
+        _initialScale =  transform.localScale;
     }
 
     private void OnEnable()
     {
-        PlayerJumpScript.JumpPerformedEvent += PerformEffect;
+        PlayerJumpScript.JumpPerformedEvent += PerformStartJumpEffect;
+        GroundCheck.IsNowGroundedEvent += CheckGrounded;
     }
 
     private void OnDisable()
     {
-        PlayerJumpScript.JumpPerformedEvent -= PerformEffect;
+        PlayerJumpScript.JumpPerformedEvent -= PerformStartJumpEffect;
+        GroundCheck.IsNowGroundedEvent -= CheckGrounded;
     }
 
-    public void PerformEffect()
+    private void CheckGrounded(bool isGrounded)
+    {
+        if (!isGrounded) return;
+        
+        _particleSystem.Play();
+        
+        if (_currentRoutine != null)
+            StopCoroutine(_currentRoutine);
+        
+        _currentRoutine = StartCoroutine(ScaleRoutine(_animationCurveGroundedX, _animationCurveGroundedY));
+    }
+
+    public void PerformStartJumpEffect()
     {
         _particleSystem.Play();
 
         if (_currentRoutine != null)
             StopCoroutine(_currentRoutine);
+        
+        _currentRoutine = StartCoroutine(ScaleRoutine(_animationCurveX, _animationCurveY));
 
-        _currentRoutine = StartCoroutine(ScaleRoutine());
     }
 
-    IEnumerator ScaleRoutine()
+    IEnumerator ScaleRoutine(AnimationCurve curveX, AnimationCurve curveY)
     {
         float timer = 0f;
+                
+        transform.localScale = _initialScale;
 
         while (timer < _animationDuration)
         {
@@ -50,8 +71,8 @@ public class PlayerJumpEffect : MonoBehaviour
             float t = Mathf.InverseLerp(0, _animationDuration, timer);
 
             transform.localScale = new Vector3(
-                _animationCurveX.Evaluate(t),
-                _animationCurveY.Evaluate(t),
+                curveX.Evaluate(t),
+                curveY.Evaluate(t),
                 transform.localScale.z
             );
 
@@ -60,8 +81,8 @@ public class PlayerJumpEffect : MonoBehaviour
 
         // Assure qu’on finit à la valeur finale exacte
         transform.localScale = new Vector3(
-            _animationCurveX.Evaluate(1f),
-            _animationCurveY.Evaluate(1f),
+            curveX.Evaluate(1f),
+            curveY.Evaluate(1f),
             transform.localScale.z
         );
 

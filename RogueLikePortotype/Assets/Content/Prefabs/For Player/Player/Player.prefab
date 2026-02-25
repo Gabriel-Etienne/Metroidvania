@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5926938760923760719}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.536, z: 0}
+  m_LocalPosition: {x: 0, y: -0.615, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41,7 +41,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5926938760923760719}
   serializedVersion: 8
-  lengthInSec: 1.5
+  lengthInSec: 0.75
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -4923,6 +4923,7 @@ GameObject:
   - component: {fileID: 6728960186643178232}
   - component: {fileID: 5864118243976216134}
   - component: {fileID: 4480114434719363497}
+  - component: {fileID: 3779817505840213654}
   m_Layer: 6
   m_Name: ActionScriptContainer
   m_TagString: Untagged
@@ -4958,7 +4959,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMoveScript
   player: {fileID: 9144299580736110667}
-  rb: {fileID: 5942345088478417293}
 --- !u!114 &4480114434719363497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4972,8 +4972,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerJumpScript
   player: {fileID: 9144299580736110667}
-  rb: {fileID: 5942345088478417293}
   _delayMinBetweenJump: 0.25
+--- !u!114 &3779817505840213654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6529491824051523452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8239c276a45a94f4499e98a46b7924f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDashScript
+  player: {fileID: 9144299580736110667}
+  _delayOfDash: 0.2
+  _delayBetweenDash: 0.19
 --- !u!1 &6632539717898370349
 GameObject:
   m_ObjectHideFlags: 0
@@ -5080,8 +5094,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.026591212, y: 0}
-  m_Size: {x: 0.45283777, y: 1.21875}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.54414725, y: 1.21875}
   m_Direction: 0
 --- !u!50 &5942345088478417293
 Rigidbody2D:
@@ -5106,7 +5120,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -5187,6 +5201,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c047bfdb-1ca7-4027-a9de-dbf0a29d0c6e
     m_ActionName: 'Movement/Sprint[/Keyboard/leftShift]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3282621305650577934}
+        m_TargetAssemblyTypeName: PlayerControllerScript, Assembly-CSharp
+        m_MethodName: OnDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a79edc0d-d1dc-476f-8477-703e6d613c40
+    m_ActionName: 'Movement/Jump1[/Keyboard/shift]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Movement
@@ -5217,8 +5247,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
   stats: {fileID: 11400000, guid: e70ea23c2580dc5409ad07de92f2a57e, type: 2}
-  moveMoveState: 0
   groundCheckScript: {fileID: 7438929686840162427}
+  rb: {fileID: 0}
+  lastVelocityDirection: 1
 --- !u!114 &7438929686840162427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5235,8 +5266,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _groundCheckPos: {fileID: 3043102895945644795}
-  _groundChecSize: {x: 0.3, y: 0.3}
-  _coyoteTimeDuration: 0.1
+  _groundChecSize: {x: 0.36, y: 0.1}
+  _coyoteTimeDuration: 0.15
   _drawGizmos: 1
   _groundCheckGizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &7170627058329867890
@@ -5448,6 +5479,72 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _animationCurveGroundedX:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 2.0000005
+      outSlope: 2.0000005
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.1
+      value: 1.2
+      inSlope: 0.8888891
+      outSlope: 0.8888891
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.22222228
+      outSlope: -0.22222228
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _animationCurveGroundedY:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.86679983
+      outSlope: -0.86679983
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.10091939
+      value: 0.9125231
+      inSlope: -0.38475195
+      outSlope: -0.38475195
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.097295955
+      outSlope: 0.097295955
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _particleSystem: {fileID: 7340676550414874841}
   _animationDuration: 0.15
 --- !u!114 &1229637256384205295
@@ -5462,6 +5559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51faa2dab178a414dac5a9a9be667f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimationController
+  _rb: {fileID: 5942345088478417293}
 --- !u!1 &8301121871505350658
 GameObject:
   m_ObjectHideFlags: 0
@@ -5487,7 +5585,7 @@ Transform:
   m_GameObject: {fileID: 8301121871505350658}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.65, z: 0}
+  m_LocalPosition: {x: 0, y: -0.628, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
