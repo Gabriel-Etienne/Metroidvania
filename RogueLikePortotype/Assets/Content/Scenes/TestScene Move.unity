@@ -5875,7 +5875,7 @@ PrefabInstance:
     - target: {fileID: 4377882626366937287, guid: a68729916c543824bbb556c14132cde8, type: 3}
       propertyPath: UVModule.sprites.Array.data[0].sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2207cbbbb0bdcb34eb05c9c6557aa937, type: 3}
+      objectReference: {fileID: 21300000, guid: a93cf5b8df3820c4e9d698584b559954, type: 3}
     - target: {fileID: 4377882626366937287, guid: a68729916c543824bbb556c14132cde8, type: 3}
       propertyPath: UVModule.sprites.Array.data[1].sprite
       value: 
