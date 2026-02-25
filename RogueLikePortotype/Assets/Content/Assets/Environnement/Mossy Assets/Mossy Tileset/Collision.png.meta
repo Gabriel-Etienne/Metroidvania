@@ -1,0 +1,484 @@
+fileFormatVersion: 2
+guid: 87c0b0551f5786b40bd8db87bd78da5a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3759228360811183398
+    second: Collision_0
+  - first:
+      213: -2623895963117646339
+    second: Collision_1
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 146
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Collision_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 438
+        width: 146
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 73, y: 1}
+        - {x: -1, y: 1}
+        - {x: -1, y: -73}
+        - {x: 73, y: -73}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62d79b3e6467b2430800000000000000
+      internalID: 3759228360811183398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Collision_1
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 438
+        width: 146
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 73, y: 73}
+        - {x: -1, y: 73}
+        - {x: -1, y: -1}
+        - {x: 73, y: -1}
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfd8ac6068c069bd0800000000000000
+      internalID: -2623895963117646339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Collision_2
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 438
+        width: 146
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 1, y: 73}
+        - {x: -73, y: 73}
+        - {x: -73, y: -1}
+        - {x: 1, y: -1}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a55066486dc1fb469c8c757d084f25e
+      internalID: -773757473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Collision_3
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 438
+        width: 146
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 1, y: 1}
+        - {x: -73, y: 1}
+        - {x: -73, y: -73}
+        - {x: 1, y: -73}
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa775b6510f71b84882bfb2fa5fc9839
+      internalID: 1151401360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Collision_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 292
+        width: 146
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 73, y: 73}
+        - {x: -1, y: 73}
+        - {x: -1, y: -73}
+        - {x: 73, y: -73}
+      tessellationDetail: 0
+      bones: []
+      spriteID: de466e69ee1df7c448a1c973594341f3
+      internalID: -2137543642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Collision_5
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 292
+        width: 146
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 73, y: 73}
+        - {x: -73, y: 73}
+        - {x: -73, y: -1}
+        - {x: 73, y: -1}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45955a9f2bc6fc44995e650182a8dc76
+      internalID: 1375195411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Collision_6
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 292
+        width: 146
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 1, y: 73}
+        - {x: -73, y: 73}
+        - {x: -73, y: -73}
+        - {x: 1, y: -73}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 537c9a12c66e082479a33e5bf093cfc6
+      internalID: -694298663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Collision_7
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 292
+        width: 146
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 73, y: 1}
+        - {x: -73, y: 1}
+        - {x: -73, y: -73}
+        - {x: 73, y: -73}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8251e0e4e9b39f47ac04a02a9e6142b
+      internalID: 1153107382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Collision_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 146
+        width: 146
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 73, y: 73}
+        - {x: -1, y: 73}
+        - {x: -1, y: -73}
+        - {x: 73, y: -73}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31fb2f3b89e2e7340a4cdac7fb594157
+      internalID: 1073800472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Collision_9
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 146
+        width: 146
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 73, y: 73}
+        - {x: -1, y: 73}
+        - {x: -1, y: 1}
+        - {x: -73, y: 1}
+        - {x: -73, y: -73}
+        - {x: 73, y: -73}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9b7b63b84a931942b268a4f73f50e4d
+      internalID: 1154710083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Collision_10
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 146
+        width: 146
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 73, y: 73}
+        - {x: -73, y: 73}
+        - {x: -73, y: -1}
+        - {x: -1, y: -1}
+        - {x: -1, y: -73}
+        - {x: 73, y: -73}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27a58dd225a646d4d901f329b221639c
+      internalID: 1748718154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Collision_11
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 146
+        width: 146
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 1, y: -1}
+        - {x: 73, y: -1}
+        - {x: 73, y: 73}
+        - {x: -73, y: 73}
+        - {x: -73, y: -73}
+        - {x: 1, y: -73}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b26622a556c07b4a9f4f992bd73d78b
+      internalID: -1531138962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Collision_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 146
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 73, y: 1}
+        - {x: 1, y: 1}
+        - {x: 1, y: 73}
+        - {x: -73, y: 73}
+        - {x: -73, y: -73}
+        - {x: 73, y: -73}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c7a9de12fbe95e4ea78070ceffb758f
+      internalID: 1521294634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: dd0621d88fbe02843b633c4181b44a29
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":146.0,"y":146.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Collision_0: 3759228360811183398
+      Collision_1: -2623895963117646339
+      Collision_10: 1748718154
+      Collision_11: -1531138962
+      Collision_12: 1521294634
+      Collision_2: -773757473
+      Collision_3: 1151401360
+      Collision_4: -2137543642
+      Collision_5: 1375195411
+      Collision_6: -694298663
+      Collision_7: 1153107382
+      Collision_8: 1073800472
+      Collision_9: 1154710083
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
