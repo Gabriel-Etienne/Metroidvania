@@ -28,7 +28,7 @@ public class PlayerMoveScript : PlayerAction
 
     void GetMoveInput(Vector2 inputValue)
     {
-        if (inputValue.x != 0)
+        if (Mathf.Abs(inputValue.x) > 0.2f)
         {
             isMoving = true;
             direction = new Vector2(inputValue.x, 0).normalized;

@@ -18,13 +18,24 @@ public class PlayerJumpScript : PlayerAction
     private void OnEnable()
     {
         PlayerControllerScript.OnJumpInput += GetJumpInput;
+        PlayerControllerScript.OnReleaseJumpInput += CheckJumpState;
     }
 
     private void OnDisable()
     {
         PlayerControllerScript.OnJumpInput -= GetJumpInput;
+        PlayerControllerScript.OnReleaseJumpInput -= CheckJumpState;
     }
 
+    void CheckJumpState()
+    {
+        if (!player || player.MoveMoveState != PlayerMoveState.Cancelable) 
+            return;
+        
+        if (player.rb.linearVelocityY > 1f) // est en train de monter
+            player.rb.linearVelocityY /= 2;
+    }
+    
     void GetJumpInput()
     {
         TryToJump();

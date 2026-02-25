@@ -6,7 +6,10 @@ using System;
 public class PlayerControllerScript : MonoBehaviour
 {
     public static Action<Vector2> OnMoveInput;
+    
     public static Action OnJumpInput;
+    public static Action OnReleaseJumpInput;
+    
     public static Action<bool> OnRunInput;
     public static Action OnDashInput;
     public void OnMove(InputAction.CallbackContext context)
@@ -26,6 +29,10 @@ public class PlayerControllerScript : MonoBehaviour
         if (context.performed)
         {
             OnJumpInput?.Invoke();
+        }
+        else if (context.canceled)
+        {
+            OnReleaseJumpInput?.Invoke();
         }
     }
     

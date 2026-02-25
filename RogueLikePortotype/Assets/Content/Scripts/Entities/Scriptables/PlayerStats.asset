@@ -20,4 +20,4 @@ MonoBehaviour:
   runSpeed: 7.5
   accelRunSpeed: 75
   dashSpeed: 15
-  jumpForce: 20
+  jumpForce: 25
