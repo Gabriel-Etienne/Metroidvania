@@ -1248,8 +1248,8 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.7853982
-      minScalar: -0.7853981
+      scalar: 1.5707963
+      minScalar: -1.5707963
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1374,9 +1374,9 @@ ParticleSystem:
     fps: 30
     frameOverTime:
       serializedVersion: 2
-      minMaxState: 1
-      scalar: 0.9999
-      minScalar: 0.9999
+      minMaxState: 3
+      scalar: 0.8181818
+      minScalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1427,8 +1427,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startFrame:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
+      minMaxState: 3
+      scalar: 0.8181818
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1487,7 +1487,17 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 998237952344926632, guid: 331e55ae251bdcd4d9e5a47af43d6edd, type: 3}
+    - sprite: {fileID: -6623804815692865199, guid: 59c45399f111f544da7b986deca7ebb6, type: 3}
+    - sprite: {fileID: -8926764531331903452, guid: 59c45399f111f544da7b986deca7ebb6, type: 3}
+    - sprite: {fileID: 7792833152015778745, guid: 59c45399f111f544da7b986deca7ebb6, type: 3}
+    - sprite: {fileID: 7362399453006900475, guid: 59c45399f111f544da7b986deca7ebb6, type: 3}
+    - sprite: {fileID: -2593517937340871772, guid: 59c45399f111f544da7b986deca7ebb6, type: 3}
+    - sprite: {fileID: -7547767059752448215, guid: 59c45399f111f544da7b986deca7ebb6, type: 3}
+    - sprite: {fileID: -3418532620603396773, guid: 59c45399f111f544da7b986deca7ebb6, type: 3}
+    - sprite: {fileID: -3200611628619333835, guid: 59c45399f111f544da7b986deca7ebb6, type: 3}
+    - sprite: {fileID: 1438290353, guid: 59c45399f111f544da7b986deca7ebb6, type: 3}
+    - sprite: {fileID: 2105411586, guid: 59c45399f111f544da7b986deca7ebb6, type: 3}
+    - sprite: {fileID: -1890178227, guid: 59c45399f111f544da7b986deca7ebb6, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
