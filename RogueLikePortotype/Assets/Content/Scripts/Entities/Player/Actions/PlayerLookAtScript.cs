@@ -19,7 +19,7 @@ public class PlayerLookAtScript : MonoBehaviour
 
     private void ChangeLookInput(Vector2 input)
     {
-        Debug.Log($"Looking at {input}");
+        //Debug.Log($"Looking at {input}");
 
         Vector2 newPos = input * maxDistance;
         

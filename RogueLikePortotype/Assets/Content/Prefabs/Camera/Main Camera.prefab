@@ -154,16 +154,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraManager
   particles:
   - {fileID: 4377882626366937287}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1262440561661754360}
+  - {fileID: 6044702010210007639}
   _spriteFogMaterials:
   - {fileID: 1485632132448633307}
   - {fileID: 3605435084613538501}
   - {fileID: 2364991655481028020}
   _fogTransitionDuration: 3
-  _deadZoneSize: {x: 2, y: 1}
-  _cameraSpeed: 15
+  _deadZoneSize: {x: 1, y: 1}
   _drawGizmo: 1
+  _clampCameraPositionX: {x: -5, y: 5}
+  _clampCameraPositionY: {x: 0, y: 0}
   smoothTime: 0.2
 --- !u!1 &1303154284213463581
 GameObject:
@@ -600,6 +601,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1894203143014885521, guid: e1ce7f61b61983545be4acfef2bfe906, type: 3}
   m_PrefabInstance: {fileID: 1210961671367203124}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &1262440561661754360 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 93208048441500364, guid: e1ce7f61b61983545be4acfef2bfe906, type: 3}
+  m_PrefabInstance: {fileID: 1210961671367203124}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4434490048777599499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -775,5 +781,10 @@ PrefabInstance:
 --- !u!4 &5251676495372136458 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1894203143014885521, guid: e1ce7f61b61983545be4acfef2bfe906, type: 3}
+  m_PrefabInstance: {fileID: 5956076797102135451}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6044702010210007639 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 93208048441500364, guid: e1ce7f61b61983545be4acfef2bfe906, type: 3}
   m_PrefabInstance: {fileID: 5956076797102135451}
   m_PrefabAsset: {fileID: 0}
