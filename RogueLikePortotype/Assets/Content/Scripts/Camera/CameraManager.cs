@@ -22,7 +22,7 @@ public class CameraManager : MonoBehaviour
     
     
     private Transform _target = null;
-    private Coroutine _followTargetCoroutine;
+    private Coroutine _currentMoveCoroutine;
     
     private bool _isDeadZoneActive = true;
     [SerializeField] private Vector2 _deadZoneSize = new Vector2(3f, 2f);
@@ -32,7 +32,9 @@ public class CameraManager : MonoBehaviour
     [SerializeField] Vector2 _clampCameraPositionX = new Vector2(-50f, 50f);
     [SerializeField] Vector2 _clampCameraPositionY = new Vector2(-50f, 50f);
     
-    [SerializeField] float smoothTime = 0.2f;
+    [SerializeField] float _smoothTime = 0.2f;
+    [SerializeField] float _transitionSpeed = 10f;
+    [SerializeField] float _tolerance = 0.001f;
     private Vector3 _velocity;
 
     private void Awake()
@@ -41,6 +43,11 @@ public class CameraManager : MonoBehaviour
         {
             _spriteFogMaterials[i].material = new Material(_spriteFogMaterials[i].material);
         }
+    }
+
+    private void Start()
+    {
+        UpdateMinMaxCamPosEvent?.Invoke(_clampCameraPositionX, _clampCameraPositionY);
     }
     
 
@@ -73,16 +80,17 @@ public class CameraManager : MonoBehaviour
 
     private void UpdateMinMaxCamPos(Vector2 xPos, Vector2 yPos)
     {
+        if (_currentMoveCoroutine != null)
+            StopCoroutine(_currentMoveCoroutine);
+        
         _clampCameraPositionX = xPos;
         _clampCameraPositionY = yPos;
+        
+        _currentMoveCoroutine = StartCoroutine(TransitionCoroutine());
     }
 
     private void ChangeDeadZone(bool newIsDeadZoneActive = true)
     {
-        if (_isDeadZoneActive != newIsDeadZoneActive && !_isDeadZoneActive)
-        {
-            ApplyMovementToCamera(false);
-        }
         _isDeadZoneActive = newIsDeadZoneActive;
     }
 
@@ -94,16 +102,17 @@ public class CameraManager : MonoBehaviour
         
         if (_target != null)
         {
-            if (_followTargetCoroutine != null)
-                StopCoroutine(_followTargetCoroutine);
+            if (_currentMoveCoroutine != null)
+                StopCoroutine(_currentMoveCoroutine);
             
-            _followTargetCoroutine = StartCoroutine(FollowTarget());
+            _currentMoveCoroutine = StartCoroutine(FollowTarget());
         }
     }
 
-    private void ApplyMovementToCamera(bool isSmooth = true)
+    private void ApplyMovementToCamera()
     {
-        float camSpeed = isSmooth ? smoothTime : 0.1f;
+        float camSpeed = _smoothTime;
+        
         Vector3 camPos = transform.position;
         Vector3 targetPos = _target.position;
 
@@ -121,9 +130,6 @@ public class CameraManager : MonoBehaviour
             desiredPos.y += delta.y - deadZoneSize.y;
         else if (delta.y < -deadZoneSize.y)
             desiredPos.y += delta.y + deadZoneSize.y;
-            
-            
-        desiredPos.z = camPos.z;
 
         Vector3 newPos = Vector3.SmoothDamp(
             camPos,
@@ -131,7 +137,9 @@ public class CameraManager : MonoBehaviour
             ref _velocity,
             camSpeed
         );
-            
+        
+        // brutal mais bon endroit
+        
         if (newPos.x < _clampCameraPositionX.x)
         {
             newPos.x = _clampCameraPositionX.x;
@@ -152,10 +160,9 @@ public class CameraManager : MonoBehaviour
 
         transform.position = newPos;
     }
-
+    
     IEnumerator FollowTarget()
     {
-        
         while (_target != null)
         {
             ApplyMovementToCamera();
@@ -163,6 +170,42 @@ public class CameraManager : MonoBehaviour
             yield return null;
         }
     }
+    
+    IEnumerator TransitionCoroutine()
+    {
+        Vector3 startPos = transform.position;
+        Vector3 targetPos = _target.position;
+        
+        float duration = _transitionSpeed; // temps total
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            startPos = transform.position;
+            targetPos = _target.position;
+            targetPos.z = startPos.z;
+
+            // Clamp propre
+            targetPos.x = Mathf.Clamp(targetPos.x, _clampCameraPositionX.x, _clampCameraPositionX.y);
+            targetPos.y = Mathf.Clamp(targetPos.y, _clampCameraPositionY.x, _clampCameraPositionY.y);
+            elapsed += Time.deltaTime;
+
+            float t = elapsed / duration;
+
+            // Easing (accélère puis ralentit)
+            t = Mathf.SmoothStep(0f, 1f, t);
+
+            transform.position = Vector3.Lerp(startPos, targetPos, t);
+
+            yield return null;
+        }
+
+        transform.position = targetPos;
+
+        _currentMoveCoroutine = StartCoroutine(FollowTarget());
+    }
+    
+    
     
     private void OnDrawGizmos()
     {
