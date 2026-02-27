@@ -6,7 +6,7 @@ using System;
 public class PlayerControllerScript : MonoBehaviour
 {
     public static Action<bool> OnDebugAction;
-    public bool debugBool = true;
+    private bool debugBool = true;
     
     public static Action<Vector2> OnMoveInput;
     
@@ -22,6 +22,7 @@ public class PlayerControllerScript : MonoBehaviour
     {
         if (context.performed)
         {
+            debugBool = !debugBool;
             OnDebugAction?.Invoke(debugBool);
             Debug.Log($"Debug Action: {debugBool}");
         }
@@ -29,7 +30,7 @@ public class PlayerControllerScript : MonoBehaviour
 
     public void OnLook(InputAction.CallbackContext context)
     {
-        if (context.performed && context.ReadValue<Vector2>().magnitude > 0.2f)
+        if (context.performed && context.ReadValue<Vector2>().magnitude > 0.5f)
         {
             OnLookInput?.Invoke(context.ReadValue<Vector2>());
         }

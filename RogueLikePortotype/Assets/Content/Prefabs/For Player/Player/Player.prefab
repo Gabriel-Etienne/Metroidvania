@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 6
   m_Name: CameraTarget
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 5864118243976216134}
   - component: {fileID: 4480114434719363497}
   - component: {fileID: 3779817505840213654}
+  - component: {fileID: 13173660098021240}
   m_Layer: 6
   m_Name: ActionScriptContainer
   m_TagString: Untagged
@@ -107,6 +108,20 @@ MonoBehaviour:
   player: {fileID: 9144299580736110667}
   _delayOfDash: 0.2
   _delayBetweenDash: 0.35
+--- !u!114 &13173660098021240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6529491824051523452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6bbd907d7b7f7f4c9bab197784f8dfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerLookAtScript
+  maxDistance: 3
+  _transformToMove: {fileID: 6590525970708790842}
 --- !u!1 &6632539717898370349
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +411,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a79edc0d-d1dc-476f-8477-703e6d613c40
     m_ActionName: 'Movement/Jump1[/Keyboard/shift]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3282621305650577934}
+        m_TargetAssemblyTypeName: PlayerControllerScript, Assembly-CSharp
+        m_MethodName: OnDebug
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c1c0b681-3002-4a31-aff3-07bd6a0aeee9
+    m_ActionName: 'Movement/DebugInput[/Keyboard/backquote]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Movement
@@ -413,6 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbee2c9e59b4db4418c13496eee2917d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerControllerScript
+  debugBool: 0
 --- !u!114 &9144299580736110667
 MonoBehaviour:
   m_ObjectHideFlags: 0
