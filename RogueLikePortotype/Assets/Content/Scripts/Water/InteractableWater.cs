@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UIElements;
@@ -8,6 +9,21 @@ using UnityEditor.UIElements;
 [RequireComponent(typeof(WaterTriggerHandler))]
 public class InteractableWater : MonoBehaviour
 {
+    [Header("Springs")]
+    [SerializeField] private float _spriteConstant = 1.4f;
+    [SerializeField] private float _damping = 1.1f;
+    [SerializeField] private float _spread = 6.5f;
+    [SerializeField, Range(1,10)] private int _wavePropagationIterations = 8;
+    [SerializeField, Range(0f, 20f)] private float _speedMult = 5.5f;
+    
+    
+    [Header("Force")]
+    public float ForceMultiplier = 0.2f;
+    [Range(1f,50f)] public float MaxForce = 5f;
+
+    [Header("Collision")] 
+    [SerializeField, Range(1f, 20f)] private float _playerCollisionRadiusMult = 4.15f;
+    
     [Header("MeshGenerator")]
     [Range(2, 500)] public int NumbOfXVertices = 70;
 
@@ -28,15 +44,82 @@ public class InteractableWater : MonoBehaviour
     
     private EdgeCollider2D _collider;
 
+    private class WaterPoint
+    {
+        public float velocity, pos, targetHeight;
+    }
+    
+    private List<WaterPoint> _waterPoints = new List<WaterPoint>();
+    
+
     private void Start()
     {
+        _collider = GetComponent<EdgeCollider2D>();
+        
         GenerateMesh();
+        CreateWaterPoints();
     }
 
     private void Reset()
     {
         _collider = GetComponent<EdgeCollider2D>();
         _collider.isTrigger = true;
+    }
+
+    private void FixedUpdate()
+    {
+        // update spring pos 
+        for (int i = 1; i < _waterPoints.Count - 1; i++)
+        {
+            WaterPoint point =  _waterPoints[i];
+            
+            float x = point.pos - point.targetHeight;
+            float acceleration = - _spriteConstant * x - _damping * point.velocity;
+            
+            point.pos += point.velocity * _speedMult * Time.fixedDeltaTime;
+            
+            _vertices[_topVerticesIndex[i]].y =  point.pos;
+            point.velocity = acceleration * _speedMult * Time.fixedDeltaTime;
+        }
+        
+        // wave propagation
+        for (int j = 0; j < _wavePropagationIterations; j++)
+        {
+            for (int i = 1; i < _waterPoints.Count - 1; i++)
+            {
+                float leftDelta = _speedMult * (_waterPoints[i].pos - _waterPoints[i - 1].pos) * _speedMult * Time.fixedDeltaTime;
+                _waterPoints[i - 1].velocity += leftDelta;
+                
+                float rightDelta = _speedMult * (_waterPoints[i].pos - _waterPoints[i + 1].pos) * _speedMult * Time.fixedDeltaTime;
+                _waterPoints[i + 1].velocity += rightDelta;
+            }
+        }
+        
+        // update the mesh
+        _mesh.vertices = _vertices;
+        
+    }
+
+    public void Splash(Collider2D collision, float force)
+    {
+        float radius = collision.bounds.extents.x * _playerCollisionRadiusMult;
+        Vector2 center = collision.transform.position;
+
+        for (int i = 0; i < _waterPoints.Count; i++)
+        {
+            Vector2 vertexWorldPos = transform.TransformPoint(_vertices[_topVerticesIndex[i]]);
+
+            if (IsPointInsideCircle(vertexWorldPos, center, radius))
+            {
+                _waterPoints[i].velocity = force;
+            }
+        }
+    }
+
+    private bool IsPointInsideCircle(Vector2 point, Vector2 center, float radius)
+    {
+        float distanceSquare = (point - center).sqrMagnitude;
+        return distanceSquare <= radius * radius;
     }
 
     public void ResetEdgeCollider()
@@ -53,8 +136,6 @@ public class InteractableWater : MonoBehaviour
         
         _collider.offset = Vector2.zero;
         _collider.points = newPoints;
-        
-        
         
     }
 
@@ -126,8 +207,20 @@ public class InteractableWater : MonoBehaviour
         
         _meshFilter.mesh = _mesh;
     }
-    
-    
+
+    private void CreateWaterPoints()
+    {
+        _waterPoints.Clear();
+        for (int i = 0; i < _topVerticesIndex.Length; i++)
+        {
+            _waterPoints.Add(
+                new WaterPoint {
+                    pos = _vertices[_topVerticesIndex[i]].y,
+                    targetHeight = _vertices[_topVerticesIndex[i]].y
+                }
+            );
+        }
+    }
 }
 
 
