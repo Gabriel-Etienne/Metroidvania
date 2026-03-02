@@ -72,8 +72,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 1
-  m_PointLightOuterRadius: 9
+  m_PointLightInnerRadius: 4.15
+  m_PointLightOuterRadius: 10
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -96,7 +96,7 @@ GameObject:
   m_Layer: 6
   m_Name: CameraTarget
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 3371372426288696686}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 4480114434719363497}
   - component: {fileID: 3779817505840213654}
   - component: {fileID: 13173660098021240}
+  - component: {fileID: 8790756877707627086}
   m_Layer: 6
   m_Name: ActionScriptContainer
   m_TagString: Untagged
@@ -204,8 +205,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6bbd907d7b7f7f4c9bab197784f8dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLookAtScript
-  maxDistance: 3
+  maxDistance: 2
   _transformToMove: {fileID: 6590525970708790842}
+  _rb: {fileID: 5942345088478417293}
+--- !u!114 &8790756877707627086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6529491824051523452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0f759d9d222906478a0572e4ea0c86b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHardFall
+  _fastGravity: 3
+  _rb: {fileID: 5942345088478417293}
 --- !u!1 &6632539717898370349
 GameObject:
   m_ObjectHideFlags: 0

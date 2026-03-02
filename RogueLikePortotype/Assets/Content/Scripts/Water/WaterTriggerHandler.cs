@@ -17,14 +17,21 @@ public class WaterTriggerHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Debug.Log(collision.gameObject.name);
+        
         // if our collision is within the waterMask LayerMask
         if ((_waterMask.value & (1 << collision.gameObject.layer)) > 0)
         {
+            //Debug.Log("(_waterMask.value & (1 << collision.gameObject.layer)) > 0 = true");
+            
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
             
             if (rb == null) return;
             
+            //Debug.Log("(rb != null)");
             //spawn particles
+            
+            //Time.timeScale = 0.2f;
             
             
             
@@ -37,6 +44,18 @@ public class WaterTriggerHandler : MonoBehaviour
             vel *= multiplier;
             
             _water.Splash(collision, vel);
+        }
+    }
+    
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        //Debug.Log(collision.gameObject.name);
+        
+        // if our collision is within the waterMask LayerMask
+        if ((_waterMask.value & (1 << collision.gameObject.layer)) > 0)
+        {
+            //Time.timeScale = 1f;
+            
         }
     }
 }

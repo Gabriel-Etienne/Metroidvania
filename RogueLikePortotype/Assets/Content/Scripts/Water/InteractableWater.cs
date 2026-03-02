@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using UnityEngine.UIElements;
+
+#if UNITY_EDITOR
+using UnityEditor;
 using UnityEditor.UIElements;
+#endif
 
 [RequireComponent(typeof(MeshRenderer), typeof(MeshFilter), typeof(EdgeCollider2D))]
 [RequireComponent(typeof(WaterTriggerHandler))]
@@ -102,6 +105,7 @@ public class InteractableWater : MonoBehaviour
 
     public void Splash(Collider2D collision, float force)
     {
+        Debug.Log("Splash");
         float radius = collision.bounds.extents.x * _playerCollisionRadiusMult;
         Vector2 center = collision.transform.position;
 
@@ -223,7 +227,7 @@ public class InteractableWater : MonoBehaviour
     }
 }
 
-
+#if UNITY_EDITOR
 [CustomEditor(typeof(InteractableWater))]
 public class InteractableWaterEditor : Editor
 {
@@ -320,3 +324,5 @@ public class InteractableWaterEditor : Editor
     }
     
 }
+
+#endif
