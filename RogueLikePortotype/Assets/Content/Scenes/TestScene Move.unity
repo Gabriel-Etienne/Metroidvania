@@ -162,17 +162,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6121283014959160467, guid: 4826ac75657bf5c47b799495dcdc0ad4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6793320014099884237, guid: 4826ac75657bf5c47b799495dcdc0ad4, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8934112962866842408, guid: 4826ac75657bf5c47b799495dcdc0ad4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.09
+      value: -1.01
       objectReference: {fileID: 0}
     - target: {fileID: 8934112962866842408, guid: 4826ac75657bf5c47b799495dcdc0ad4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.71
+      value: 0.64
       objectReference: {fileID: 0}
     - target: {fileID: 8934112962866842408, guid: 4826ac75657bf5c47b799495dcdc0ad4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -601,7 +605,7 @@ MonoBehaviour:
   _drawGizmo: 1
   _layerMask:
     serializedVersion: 2
-    m_Bits: 1536
+    m_Bits: 1544
 --- !u!43 &2024268115
 Mesh:
   m_ObjectHideFlags: 0
