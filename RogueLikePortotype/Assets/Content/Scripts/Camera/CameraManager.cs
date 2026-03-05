@@ -196,6 +196,13 @@ public class CameraManager : MonoBehaviour
             t = Mathf.SmoothStep(0f, 1f, t);
 
             transform.position = Vector3.Lerp(startPos, targetPos, t);
+            
+            // Add a break if the target has reached before the end of the time elapsed  
+            if (Vector2.Distance(startPos, targetPos) <= 0.1f)
+            {
+                Debug.Log("Transition Complete");
+                break;
+            }
 
             yield return null;
         }
