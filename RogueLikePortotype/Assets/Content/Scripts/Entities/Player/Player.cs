@@ -4,8 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(GroundCheck))]
 public class Player : Entity
 {
-    private PlayerMoveState moveMoveState = PlayerMoveState.Cancelable;
-    public PlayerMoveState MoveMoveState => moveMoveState;
+    private PlayerMoveState moveState = PlayerMoveState.Cancelable;
+    public PlayerMoveState MoveState => moveState;
     
     private PlayerAction actualPriority = null;
     public PlayerAction ActualPriority => actualPriority;
@@ -36,7 +36,7 @@ public class Player : Entity
 
     public void ChangePlayerMoveState(PlayerMoveState newState, PlayerAction actionScript = null)
     {
-        moveMoveState = newState;
+        moveState = newState;
         actualPriority =  actionScript;
     }
 

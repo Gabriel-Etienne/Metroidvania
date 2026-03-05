@@ -65,7 +65,7 @@ public class PlayerDashScript : PlayerAction
 
     void TryToDash()
     {
-        if (!player || player.MoveMoveState == PlayerMoveState.UnCancelable) 
+        if (!player || player.MoveState == PlayerMoveState.UnCancelable) 
             return;
         
         if (_hasDash && _delayBetweenIsFinished)

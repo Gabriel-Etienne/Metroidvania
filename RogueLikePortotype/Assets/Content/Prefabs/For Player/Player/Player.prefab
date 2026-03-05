@@ -528,9 +528,41 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c1c0b681-3002-4a31-aff3-07bd6a0aeee9
     m_ActionName: 'Movement/DebugInput[/Keyboard/backquote]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3282621305650577934}
+        m_TargetAssemblyTypeName: PlayerControllerScript, Assembly-CSharp
+        m_MethodName: OnInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6cdf29d1-6394-4804-a230-21f637f37393
+    m_ActionName: 'Basic Control/Interact[/Keyboard/e,/SwitchProControllerHID/buttonNorth]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3282621305650577934}
+        m_TargetAssemblyTypeName: PlayerControllerScript, Assembly-CSharp
+        m_MethodName: OnAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 09cce5c3-2415-4646-87a9-d9bb38b41941
+    m_ActionName: 'Basic Control/Attack[/SwitchProControllerHID/buttonWest,/Keyboard/q]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Movement
+  m_DefaultActionMap: Basic Control
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &3282621305650577934

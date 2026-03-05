@@ -209,7 +209,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6529491824051523452, guid: 4826ac75657bf5c47b799495dcdc0ad4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1738273409}
   m_SourcePrefab: {fileID: 100100000, guid: 4826ac75657bf5c47b799495dcdc0ad4, type: 3}
 --- !u!1 &353523717
 GameObject:
@@ -373,6 +376,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1671077943110130137, guid: b640a486f5055fe4aa9c7ca4124b1128, type: 3}
   m_PrefabInstance: {fileID: 1497838180}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1409499717 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9144299580736110667, guid: 4826ac75657bf5c47b799495dcdc0ad4, type: 3}
+  m_PrefabInstance: {fileID: 158852153}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a5c096c2506bdc40a4660d437db12cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
 --- !u!1 &1466417361
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,6 +577,31 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b640a486f5055fe4aa9c7ca4124b1128, type: 3}
+--- !u!1 &1738273402 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6529491824051523452, guid: 4826ac75657bf5c47b799495dcdc0ad4, type: 3}
+  m_PrefabInstance: {fileID: 158852153}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1738273409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738273402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636634842e9c01c47962cc59fecae239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackScript
+  player: {fileID: 1409499717}
+  _inputMaxDelay: 0.25
+  _delayBetweenAttacks: 0.25
+  _radius: 0.5
+  _drawGizmo: 1
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 1536
 --- !u!43 &2024268115
 Mesh:
   m_ObjectHideFlags: 0
