@@ -49,8 +49,10 @@ public class PlayerMoveScript : PlayerAction
 
     void FixedUpdate()
     {
-        if (!player || player.MoveMoveState != PlayerMoveState.Cancelable) 
+        if (!player || player.MoveState != PlayerMoveState.Cancelable) 
             return;
+        
+        //Debug.Log("UPDATE");
 
         float speedToTarget = _isRunning && _isGrounded ? player.stats.RunSpeed : player.stats.WalkSpeed;
         float speedToAccel = _isRunning && _isGrounded ? player.stats.AccelRunSpeed : player.stats.AccelWalkSpeed;

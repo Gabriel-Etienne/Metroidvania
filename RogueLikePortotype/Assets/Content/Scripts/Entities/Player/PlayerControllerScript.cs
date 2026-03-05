@@ -17,6 +17,9 @@ public class PlayerControllerScript : MonoBehaviour
     public static Action OnDashInput;
     
     public static Action<Vector2> OnLookInput;
+    
+    public static Action OnInteractInput;
+    public static Action OnAttackInput;
 
     public void OnDebug(InputAction.CallbackContext context)
     {
@@ -81,6 +84,24 @@ public class PlayerControllerScript : MonoBehaviour
         else if (context.canceled)
         {
             OnRunInput?.Invoke(false);
+        }
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            //Debug.Log("Attack");
+            OnAttackInput?.Invoke();
+        }
+    }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            //Debug.Log("Interact");
+            OnInteractInput?.Invoke();
         }
     }
 }
