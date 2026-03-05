@@ -4,6 +4,8 @@ using System.Collections;
 
 public class PlayerDashScript : PlayerAction
 {
+    #region Variables
+
     public static Action<bool> IsDashingEvent;
     public static Action ResetDashEvent;
     
@@ -21,6 +23,8 @@ public class PlayerDashScript : PlayerAction
 
     private bool _hasDash = true;
     private float _xInput = 0;
+
+    #endregion
 
     private void Start()
     {
@@ -93,6 +97,11 @@ public class PlayerDashScript : PlayerAction
         _currentRoutine = StartCoroutine(DashRoutine()); // dash duration
         _currentBetweenRoutine = StartCoroutine(DelayRoutine()); // delay between 2 dash
         
+    }
+
+    public override void CancelAction()
+    {
+        EndDashing();
     }
 
     void EndDashing()
